@@ -17,6 +17,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		port(getPort());
+		staticFiles.location("/public");
 		new LogServiceController(new LogServiceMongoDB()); 
 	}
 
