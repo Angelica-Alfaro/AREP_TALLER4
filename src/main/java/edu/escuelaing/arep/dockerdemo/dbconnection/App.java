@@ -17,7 +17,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		port(getPort());
-		new LogServiceController( new LogServiceMongoDB() ); 
+		new LogServiceController(new LogServiceMongoDB()); 
 	}
 
 	/**

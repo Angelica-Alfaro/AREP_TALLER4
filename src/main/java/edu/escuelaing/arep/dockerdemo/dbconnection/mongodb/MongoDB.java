@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
+
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -17,7 +19,7 @@ public class MongoDB {
 		return _instance;
 	}
 	
-	public static ArrayList<MyDocument> getString() {
+	public static ArrayList<MyDocument> read() {
         try (MongoClient mongoClient = MongoClients.create("mongodb://db")) {
         	
             MongoDatabase myMongoDB = mongoClient.getDatabase("myMongoDB");
@@ -29,5 +31,20 @@ public class MongoDB {
             }
             return allStrings;
         }
+	}
+
+	public static void create(String string) {
+		 try (MongoClient mongoClient = MongoClients.create("mongodb://db")) {
+			 
+             MongoDatabase myMongoDB = mongoClient.getDatabase("myMongoDB");
+	         MongoCollection<Document> myCollection = myMongoDB.getCollection("myCollection");
+	         
+	         Document document = new Document("_id", new ObjectId());
+	         MyDocument myDocument = new MyDocument(string);
+	         document.append("string", myDocument.getString())
+	                 .append("date", myDocument.getDate());
+
+	         myCollection.insertOne(document);
+	    }
 	}
 }

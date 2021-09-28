@@ -14,15 +14,20 @@ public class LogServiceMongoDB {
 		mongoDB = MongoDB.getInstance();
 	}
 	
-	public ArrayList<MyDocument> getString (Request req, Response res) {
+	public ArrayList<MyDocument> read (Request req, Response res) {
 		res.type("application/json");
-		ArrayList<MyDocument> allStrings = mongoDB.getString();
+		ArrayList<MyDocument> allStrings = MongoDB.read();
 		ArrayList<MyDocument> lastTenStrings = new ArrayList<>();
-		for(int i = allStrings.size()-10; i < allStrings.size(); i++) {
+		for(int i = allStrings.size() - 1; i > allStrings.size() - 10; i--) {
 			if(i >= 0) {
 				lastTenStrings.add(allStrings.get(i));
 			}
 		}
 	  return lastTenStrings;
 	 }
+
+	public ArrayList<MyDocument> create(Request req, Response res) {
+		MongoDB.create(req.body());
+		return read(req, res);
+	}
 }
