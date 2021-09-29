@@ -8,13 +8,15 @@
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link rel="stylesheet" href="css/index.css" />
+        <script src="js/app.js"></script>
+        <script src="js/apiclient.js"></script>
     </head>
     <body>
         <center>
             <h1 class="myTitle">Spark Web App</h1>
             <div>
                 <input class="myInput" id="cadena" type="text" name="cadena" placeholder="Escriba una cadena">
-                <button type="button" class="btn btn-primary" onclick="">Presi&oacutename</button>
+                <button type="button" class="btn btn-primary" onclick="app.saveData()">Presi&oacutename</button>
                 <p><b>Nota: </b> Al seleccionar el bot&oacuten se guardar&aacute la cadena ingresada y se mostrar&aacuten las &uacuteltimas diez cadenas almacenadas.</p>
             </div>
         </center>

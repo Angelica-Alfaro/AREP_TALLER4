@@ -5,7 +5,7 @@ var apiclient = (function () {
             callback(data);
         });}
 
-    var addString = function (myString) {
+    var saveString = function (myString) {
         return $.ajax({
             url: "/string",
             type: "POST",
@@ -16,6 +16,6 @@ var apiclient = (function () {
 
     return {
         getStrings: getStrings,
-        addString : addString, 
+        saveString : saveString, 
     };
 })();
