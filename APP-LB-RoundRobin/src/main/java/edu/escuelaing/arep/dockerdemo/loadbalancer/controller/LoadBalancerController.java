@@ -14,7 +14,7 @@ public class LoadBalancerController {
     		response.header("Access-Control-Allow-Origin","*");
     		response.header("Access-Control-Allow-Methods","GET");
     	});
-		get("hello", (req,res) -> "Hello Docker!");
+	get("hello", (req,res) -> "Hello Docker!");
         get("string", (req,res) -> myLoadBalancerService.read(req,res));
         post("string", (req, res) -> myLoadBalancerService.create(req,res));
 	}

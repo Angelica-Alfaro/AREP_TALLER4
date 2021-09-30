@@ -24,8 +24,7 @@ public class App {
 	 * This method reads the default port as specified by the PORT variable in the
 	 * environment.
 	 *
-	 * Heroku provides the port automatically so you need this to run the project on
-	 * Heroku.
+	 * Provides the port automatically so you need this to run the project.
 	 */
 	static int getPort() {
 		if (System.getenv("PORT") != null) {
