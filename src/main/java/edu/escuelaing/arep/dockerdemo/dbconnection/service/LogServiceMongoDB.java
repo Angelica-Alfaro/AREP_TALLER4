@@ -2,6 +2,8 @@ package edu.escuelaing.arep.dockerdemo.dbconnection.service;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
 import edu.escuelaing.arep.dockerdemo.dbconnection.mongodb.MyDocument;
 import edu.escuelaing.arep.dockerdemo.dbconnection.mongodb.MongoDB;
 import spark.Request;
@@ -14,7 +16,8 @@ public class LogServiceMongoDB {
 		mongoDB = MongoDB.getInstance();
 	}
 	
-	public ArrayList<MyDocument> read (Request req, Response res) {
+	public String read (Request req, Response res) {
+		Gson gson=new Gson();
 		res.type("application/json");
 		ArrayList<MyDocument> allStrings = MongoDB.read();
 		ArrayList<MyDocument> lastTenStrings = new ArrayList<>();
@@ -22,11 +25,11 @@ public class LogServiceMongoDB {
 			if(i >= 0) {
 				lastTenStrings.add(allStrings.get(i));
 			}
-		}
-	  return lastTenStrings;
+		} 
+		return gson.toJson(lastTenStrings);
 	 }
 
-	public ArrayList<MyDocument> create(Request req, Response res) {
+	public String create(Request req, Response res) {
 		MongoDB.create(req.body());
 		return read(req, res);
 	}

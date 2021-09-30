@@ -9,7 +9,7 @@ var apiclient = (function () {
         return $.ajax({
             url: "/string",
             type: "POST",
-            data: JSON.stringify(myString),
+            data: myString,
             contentType: "application/json",
         });
         };

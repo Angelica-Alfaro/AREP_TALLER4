@@ -2,9 +2,9 @@ var app = (function () {
 
    var saveData = function () {
     cadena = $("#cadena").val();
-    console.log(cadena)
-    apiclient.saveString(cadena)
-    getData
+    apiclient.saveString(cadena).then(function(datos){
+    	getData()
+    });
    };
 
    var getData = function (){
@@ -12,7 +12,6 @@ var app = (function () {
    }
 
    var updateTable = function(data){
-       console.log(data)
        //Vaciar tabla del HTML.
        var tabla = $("table");
        var body = $("tbody");
@@ -28,6 +27,7 @@ var app = (function () {
            cols = cols + '<td>' + data[val].date + '</td> </tr>'
        }
        $("tbody").append(cols)
+       tabla.append("</tbody>");
    }
 
    return {
