@@ -13,7 +13,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDB {
 	
-	public static final MongoDB _instance = new MongoDB();
+	private static final MongoDB _instance = new MongoDB();
 
 	public static MongoDB getInstance() {
 		return _instance;

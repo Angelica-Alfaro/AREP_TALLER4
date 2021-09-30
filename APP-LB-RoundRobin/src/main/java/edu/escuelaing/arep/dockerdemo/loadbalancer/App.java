@@ -1,7 +1,6 @@
-package edu.escuelaing.arep.dockerdemo.dbconnection;
-import edu.escuelaing.arep.dockerdemo.dbconnection.controller.LogServiceController;
-import edu.escuelaing.arep.dockerdemo.dbconnection.service.LogServiceMongoDB;
-
+package edu.escuelaing.arep.dockerdemo.loadbalancer;
+import edu.escuelaing.arep.dockerdemo.loadbalancer.controller.LoadBalancerController;
+import edu.escuelaing.arep.dockerdemo.loadbalancer.service.LoadBalancerService;
 import static spark.Spark.*;
 
 /**
@@ -18,7 +17,7 @@ public class App {
 	public static void main(String[] args) {
 		port(getPort());
 		staticFiles.location("/public");
-		new LogServiceController(new LogServiceMongoDB()); 
+		new LoadBalancerController(new LoadBalancerService()); 
 	}
 
 	/**
